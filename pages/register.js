@@ -8,8 +8,8 @@ module.exports = {
   phoneInput : {xpath: '//*[@id="input-telephone"]'},
   passwordInput : {xpath: '//*[@id="input-password"]'},
   confirmPasswordInput : {xpath: '//*[@id="input-confirm"]'},
-  privatePolicyAgree : {xpath : '//*[@id="content"]/form/div/div/input[1]'},
-  submitButton : {xpath: '//*[@id="content"]/form/div/div/input[2]'},
+  privatePolicyAgree : {xpath : '//*[@name="agree"]'},
+  submitButton : {xpath: ' //*[@value="Continue"]'},
 
   verifyRegisterAccountPage() {
     const regTitleText = 'Register Account';
