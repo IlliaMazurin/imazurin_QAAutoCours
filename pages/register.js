@@ -8,26 +8,31 @@ module.exports = {
   phoneInput : {xpath: '//*[@id="input-telephone"]'},
   passwordInput : {xpath: '//*[@id="input-password"]'},
   confirmPasswordInput : {xpath: '//*[@id="input-confirm"]'},
-  privatePoliciAgree : {xpath : '//*[@id="content"]/form/div/div/input[1]'},
+  privatePolicyAgree : {xpath : '//*[@id="content"]/form/div/div/input[1]'},
   submitButton : {xpath: '//*[@id="content"]/form/div/div/input[2]'},
 
   verifyRegisterAccountPage() {
     const regTitleText = 'Register Account';
+
+    I.waitForVisible('//*[@id="content"]/h1',10);
     I.seeTextEquals(regTitleText, this.h1);
   },
 
-  fillNewUserForm(user) {
+  registerNewUserForm(user) {
     I.fillField(this.firstNameInput, user.firstName);
     I.fillField(this.lastNameInput, user.lastName);
     I.fillField(this.emailInput, user.email);
     I.fillField(this.phoneInput, user.phone);
     I.fillField(this.passwordInput, user.password);
     I.fillField(this.confirmPasswordInput, user.confirmPassword);
-    I.click(this.privatePoliciAgree);
+    I.click(this.privatePolicyAgree);
     I.click(this.submitButton);
   },
 
   verifySuccessfullRegistration() {
-    I.seeTextEquals(h1, 'Your Account Has Been Created!');
-  }
+    const regTitleText = 'Your Account Has Been Created!';
+
+    I.waitForVisible('//*[@id="content"]/h1',10);
+    I.seeTextEquals(regTitleText, this.h1);
+  },
 }
