@@ -35,7 +35,7 @@ Scenario('Add to cart prod id=44',  async ({ I , productPage, checkoutPage }) =>
    // let flatPrice = checkoutPage.getFlatPriceFromConfirmOrder();
    // let totalPrice = checkoutPage.getTotalPriceFromConfirmOrder();
    
-   // I.assertEqual(priceOnProductPage + flatPrice), totalPrice), "Prices are not in match!");
+   // I.assertEqual(priceOnProductPage + flatPrice, totalPrice), "Prices are not in match!");
     //checkoutPage.acceptConfirmOrder();
 
 

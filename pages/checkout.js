@@ -62,14 +62,14 @@ module.exports = {
   async getTotalPriceFromConfirmOrder () {
     I.waitForVisible(this.confirmTotalPrice, 10);
     I.dontSeeElement('//input[@value="Continue"]',10)
-    let totalPrice = +(I.getPriceFromString(await I.grabTextFrom(this.confirmTotalPrice)));
-    return +(totalPrice);
+    let totalPrice = I.getPriceFromString(await I.grabTextFrom(this.confirmTotalPrice));
+    return totalPrice;
   },
 
   async getFlatPriceFromConfirmOrder () {
     I.waitForVisible(this.confirmTotalPrice, 10);
     I.dontSeeElement('//input[@value="Continue"]',10)
-    let flatShippingRate = +(I.getPriceFromString(await I.grabTextFrom(this.confirmFlatShippingRate)));
-    return +(flatShippingRate);
+    let flatShippingRate = I.getPriceFromString(await I.grabTextFrom(this.confirmFlatShippingRate));
+    return flatShippingRate;
   },
 }

@@ -15,19 +15,19 @@ module.exports = {
   },
 
   async getNewProductPrice () {
-    const NewPrice = await I.grabTextFrom(this.priceNew);
-    let ProductPrice = I.getPriceFromString(NewPrice);
-    return (ProductPrice);
+    const newPrice = await I.grabTextFrom(this.priceNew);
+    let price = I.getPriceFromString(newPrice);
+    return (price);
   },
   async getColorProductPrice () {
-    const ColorPrice = await I.grabTextFrom(this.colorOption);
-    ProductPrice = I.getPriceFromString(ColorPrice);
+    const colorPrice = await I.grabTextFrom(this.colorOption);
+    let price = I.getPriceFromString(colorPrice);
     return (ProductPrice);
   },
   async getSizeProductPrice () {
-    const SizePrice = await I.grabTextFrom(this.sizeOption);
-    ProductPrice = I.getPriceFromString(SizePrice);
-    return (ProductPrice);
+    const sizePrice = await I.grabTextFrom(this.sizeOption);
+    let price = I.getPriceFromString(sizePrice);
+    return (price);
   },
 
   selectSize () {
