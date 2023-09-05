@@ -1,11 +1,13 @@
 const { I } = inject();
 
 module.exports = {
+  
   h1 : {xpath: '//*[@id="content"]/h1'},
   contineButton : {xpath: '//*[@class="btn btn-primary"]'},
   thankText : {xpath: '//*[@id="content"]/p[1]'},
 
   checkPage() {
+    
     const SuccessText = 'Your Account Has Been Created!';
     const ThankText = 'Congratulations! Your new account has been successfully created!';
 
@@ -13,10 +15,5 @@ module.exports = {
     I.seeTextEquals(SuccessText, this.h1);
     I.waitForVisible(this.thankText,10);
     I.seeTextEquals(ThankText, this.thankText);
-  },
-
-  continue() {
-    I.waitForVisible(this.contineButton,10);
-    I.click(this.contineButton);
   },
 }

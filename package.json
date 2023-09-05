@@ -4,19 +4,19 @@
     "description": "QA AutoCours",
     "main": "index.js",
     "scripts": {
-
         "codeceptjs": "codeceptjs run --steps",
         "codeceptjs:headless": "HEADLESS=true codeceptjs run --steps"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "codeceptjs-chai": "^2.3.5",
         "express": "^4.18.2"
     },
     "devDependencies": {
         "@codeceptjs/configure": "^0.10.0",
         "@codeceptjs/examples": "^1.2.1",
-        "@codeceptjs/ui": "^0.6.1",
+        "@codeceptjs/ui": "^0.3.2",
         "codeceptjs": "^3.5.3",
         "playwright": "^1.37.1"
     }
