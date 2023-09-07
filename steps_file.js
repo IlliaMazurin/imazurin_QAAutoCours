@@ -36,16 +36,15 @@ module.exports = function() {
     },
 
     getPriceFromString(arg) {
-      let arr = arg.split('');
-      let indexNumberInNum = 0;
-      for (let i=0; i<arr.length; i++) {
-        if (arr[i] === '$') {
-          indexNumberInNum = ++i;
-          break;
-        };
-      };
-      let subArg = arg.substring(indexNumberInNum, arr.length);
-      let price = parseFloat(subArg);
+      let regex = /([\d.]+)/;
+      let matches = arg.match(regex);
+      let price = 0;
+
+      if (matches) {
+        price = matches[1];
+      } else {
+        console.log('Price not found in the text!');
+      } 
       return price;
     },
   });

@@ -19,5 +19,5 @@ Scenario('Fill fields, user case, pozitive',  ({ I, indexPage, registerPage, suc
     registerPage.registerNewUserForm(USER);
     registerPage.verifySuccessfullRegistration();
 
-    successPage.checkPage();
+    successPage.checkPage(USER);
 }).tag('addNewUser');

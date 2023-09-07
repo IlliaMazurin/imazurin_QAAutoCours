@@ -1,3 +1,5 @@
+const success = require("../pages/success");
+
 const USER = {
     firstName : 'Jone',
     lastName : '007',
@@ -19,12 +21,18 @@ Before(({ I }) => {
   });
 
 Scenario('Add to cart prod id=44',  async ({ I , productPage, checkoutPage }) => {
+    let priceOnProductPage = 0;
+    let flatPrice = 0;
+    let totalPrice = 0;
 
     I.amOnPage('index.php?route=product/product&product_id=44');
     
     productPage.selectColor();
+    priceOnProductPage = await productPage.getProductNewPrice();
+    priceOnProductPage += await productPage.getColorProductPrice(); 
     productPage.selectSize();
-   // let priceOnProductPage = productPage.getNewProductPrice() + productPage.getColorProductPrice + productPage.getSizeProductPrice;
+    priceOnProductPage += await productPage.getSizeProductPrice();
+    productPage.addToCart();
     I.prossedToCheckOut();
 
     checkoutPage.verifyCheckOutAccountPage();
@@ -32,16 +40,10 @@ Scenario('Add to cart prod id=44',  async ({ I , productPage, checkoutPage }) =>
     checkoutPage.acceptDeliveryDetail();
     checkoutPage.acceptDeliveryMethod();
     checkoutPage.acceptPaymentMethod();
-   // let flatPrice = checkoutPage.getFlatPriceFromConfirmOrder();
-   // let totalPrice = checkoutPage.getTotalPriceFromConfirmOrder();
-   
-   // I.assertEqual(priceOnProductPage + flatPrice, totalPrice), "Prices are not in match!");
-    //checkoutPage.acceptConfirmOrder();
+    flatPrice = await checkoutPage.getFlatPriceFromConfirmOrder();
+    totalPrice = await checkoutPage.getTotalPriceFromConfirmOrder();
+    I.assertEqual (priceOnProductPage + flatPrice, totalPrice, "Prices are not in match!");
+    checkoutPage.acceptConfirmOrder();
 
-
-
-
-
-
-
+    success.checkPage();
 }).tag("id=44");

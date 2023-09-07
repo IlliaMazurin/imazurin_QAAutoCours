@@ -15,7 +15,7 @@ module.exports = {
   countryInput : {xpath: '//select[@name="country_id"]'},
   stateInput : {xpath : '//select[@name="zone_id"]'},
   termsAndConditionsInput : {xpath : '//input[@name="agree"]'},
-  confirmTotalPrice : {xpath: '//table/tfoot/tr[1]/td[2]'},
+  confirmTotalPrice : {xpath: '//table/tfoot/tr[3]/td[2]'},
   confirmFlatShippingRate : {xpath: '//table/tfoot/tr[2]/td[2]'},
 
 
@@ -62,14 +62,16 @@ module.exports = {
   async getTotalPriceFromConfirmOrder () {
     I.waitForVisible(this.confirmTotalPrice, 10);
     I.dontSeeElement('//input[@value="Continue"]',10)
-    let totalPrice = I.getPriceFromString(await I.grabTextFrom(this.confirmTotalPrice));
-    return totalPrice;
+    draftPrice = await I.grabTextFrom(this.confirmTotalPrice);
+    price = I.getPriceFromString(draftPrice);
+    return +price;
   },
 
   async getFlatPriceFromConfirmOrder () {
-    I.waitForVisible(this.confirmTotalPrice, 10);
-    I.dontSeeElement('//input[@value="Continue"]',10)
-    let flatShippingRate = I.getPriceFromString(await I.grabTextFrom(this.confirmFlatShippingRate));
-    return flatShippingRate;
+    I.waitForVisible(this.confirmFlatShippingRate, 10);
+    I.dontSeeElement('//input[@value="Continue"]',10);
+    draftPrice = await I.grabTextFrom(this.confirmFlatShippingRate);
+    price = I.getPriceFromString(draftPrice);
+    return +price;
   },
 }
