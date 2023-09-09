@@ -16,12 +16,15 @@ exports.config = {
   helpers: {
     Playwright: {
       browser: 'chromium',
-      url: 'http://opencart.qatestlab.net/index.php',
+      url: 'http://opencart.qatestlab.net',
       show: true,
       waitForNavigation: 'networkidle',
       waitForTimeout: 5000,
       windowSize: '1440x900',
-    }
+    },
+    ChaiWrapper: {
+      require: "codeceptjs-chai"
+  }
   },
   include: {
     I: './steps_file.js',
@@ -31,6 +34,10 @@ exports.config = {
     registerPage: "./pages/register.js",
 
     successPage: "./pages/success.js",
+
+    productPage: "./pages/product.js",
+
+    checkoutPage: "./pages/checkout.js",
   },
   name: 'imazurin_QAAutoCours',
 }
