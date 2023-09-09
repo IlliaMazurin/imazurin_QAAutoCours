@@ -24,7 +24,7 @@ exports.config = {
     },
     ChaiWrapper: {
       require: "codeceptjs-chai"
-  }
+    }
   },
   include: {
     I: './steps_file.js',
@@ -38,6 +38,8 @@ exports.config = {
     productPage: "./pages/product.js",
 
     checkoutPage: "./pages/checkout.js",
+
+    cartPage: "./pages/cart.js",
   },
   name: 'imazurin_QAAutoCours',
 }

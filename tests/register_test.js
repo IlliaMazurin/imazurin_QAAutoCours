@@ -11,7 +11,6 @@ Feature('register');
 Scenario('Fill fields, user case, pozitive',  ({ I, indexPage, registerPage, successPage }) => {
 
     I.amOnPage('/');
-    indexPage.clickMyAccount();
     indexPage.clickRegister();
 
     registerPage.verifyRegisterAccountPage();

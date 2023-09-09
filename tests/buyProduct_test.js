@@ -14,8 +14,10 @@ const USER = {
 
 Feature('buy product');
 
-Before(({ I }) => {
+Before(({ I, indexPage, cartPage }) => {
     I.login(USER);
+    indexPage.openProductCart();
+    cartPage.deletAllItem();
   });
 
 Scenario('Add to cart prod id=44',  async ({ I , productPage, checkoutPage, successPage }) => {
