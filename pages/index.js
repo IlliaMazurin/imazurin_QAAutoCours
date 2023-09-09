@@ -5,12 +5,14 @@ module.exports = {
   registerButton : { xpath: '//a[text()="Register"]' },
   signIn : { xpath: '//a[text()="Sign In"]' },
   signOut : { xpath : '//a[text()="Sign Out"]' },
+  cartButton : { xpath: '//a[text()="Shopping Cart"]' },
   
     clickMyAccount () {
       I.click(this.myAccountSpoiler);
     },
   
     clickRegister () {
+      this.clickMyAccount();
       I.click(this.registerButton);
     },
 
@@ -20,5 +22,10 @@ module.exports = {
 
     clickSignOut () {
       I.click(this.signOut);
+    },
+
+    openProductCart () {
+      this.clickMyAccount();
+      I.click(this.cartButton);
     },
 };
