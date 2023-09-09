@@ -1,4 +1,3 @@
-const { confirmPasswordInput } = require("../pages/register");
 const USER = {
     firstName : 'Jone',
     lastName : '007',

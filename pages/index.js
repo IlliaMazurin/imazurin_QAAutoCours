@@ -6,23 +6,19 @@ module.exports = {
   signIn : { xpath: '//a[text()="Sign In"]' },
   signOut : { xpath : '//a[text()="Sign Out"]' },
   
-    clickMyAccount() {
-      
+    clickMyAccount () {
       I.click(this.myAccountSpoiler);
     },
   
-    clickRegister() {
-      
+    clickRegister () {
       I.click(this.registerButton);
     },
 
-    clickSignIn() {
-      
+    clickSignIn () {
       I.click(this.signIn);
     },
 
-    clickSignOut() {
-      
+    clickSignOut () {
       I.click(this.signOut);
     },
 };

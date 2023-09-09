@@ -2,13 +2,13 @@ const { I } = inject();
 
 module.exports = {
 
-  priceNew : { xpath : '//span[@class="price-new"]'},
-  productTitle : { xpath : '//h2[@class="product-title"]'},
-  sizeDropdown : {xpath : '//label[@for="input-option22"]/following-sibling::div'},
-  colorDropdown : {xpath : '//label[@for="input-option21"]/following-sibling::div'},
-  sizeOption : { xpath : '//a[contains(text(), "Medium")]'},
-  colorOption : { xpath : '//a[contains(text(), "White")]'},
-  addButtonCart : { xpath : '//button[@id="button-cart"]'},
+  priceNew : { xpath : '//span[@class="price-new"]' },
+  productTitle : { xpath : '//h2[@class="product-title"]' },
+  sizeDropdown : {xpath : '//label[@for="input-option22"]/following-sibling::div' },
+  colorDropdown : {xpath : '//label[@for="input-option21"]/following-sibling::div' },
+  sizeOption : { xpath : '//a[contains(text(), "Medium")]' },
+  colorOption : { xpath : '//a[contains(text(), "White")]' },
+  addButtonCart : { xpath : '//button[@id="button-cart"]' },
 
   selectColor () {
     I.click(this.colorDropdown);

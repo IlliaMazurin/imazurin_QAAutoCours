@@ -1,25 +1,24 @@
 const { I } = inject();
 
 module.exports = {
-  h1 : {xpath: '//*[@id="content"]/h1'},
-  firstNameInput : {xpath: '//*[@id="input-firstname"]'},
-  lastNameInput : {xpath: '//*[@id="input-lastname"]'},
-  emailInput : {xpath: '//*[@id="input-email"]'},
-  phoneInput : {xpath: '//*[@id="input-telephone"]'},
-  passwordInput : {xpath: '//*[@id="input-password"]'},
-  confirmPasswordInput : {xpath: '//*[@id="input-confirm"]'},
-  privatePolicyAgree : {xpath : '//*[@name="agree"]'},
-  submitButton : {xpath: ' //*[@value="Continue"]'},
+  h1 : { xpath : '//*[@id="content"]/h1' },
+  firstNameInput : { xpath : '//*[@id="input-firstname"]' },
+  lastNameInput : { xpath : '//*[@id="input-lastname"]' },
+  emailInput : { xpath : '//*[@id="input-email"]' },
+  phoneInput : { xpath : '//*[@id="input-telephone"]' },
+  passwordInput : { xpath : '//*[@id="input-password"]' },
+  confirmPasswordInput : { xpath : '//*[@id="input-confirm"]' },
+  privatePolicyAgree : { xpath : '//*[@name="agree"]' },
+  submitButton : { xpath : ' //*[@value="Continue"]' },
 
-  verifyRegisterAccountPage() {
-   
+  verifyRegisterAccountPage () {
     const regTitleText = 'Register Account';
-    I.waitForVisible('//*[@id="content"]/h1',10);
+
+    I.waitForVisible(this.h1,10);
     I.seeTextEquals(regTitleText, this.h1);
   },
 
-  registerNewUserForm(user) {
-    
+  registerNewUserForm (user) {
     I.fillField(this.firstNameInput, user.firstName);
     I.fillField(this.lastNameInput, user.lastName);
     I.fillField(this.emailInput, user.email);
@@ -30,11 +29,10 @@ module.exports = {
     I.click(this.submitButton);
   },
 
-  verifySuccessfullRegistration() {
-    
+  verifySuccessfullRegistration () {
     const regTitleText = 'Your Account Has Been Created!';
-
-    I.waitForVisible('//*[@id="content"]/h1',10);
+    
+    I.waitForVisible(this.h1,10);
     I.seeTextEquals(regTitleText, this.h1);
   },
 }
