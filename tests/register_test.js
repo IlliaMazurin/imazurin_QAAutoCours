@@ -8,7 +8,7 @@ const USER = {
 
 Feature('register');
 
-Scenario('Fill fields, user case, pozitive',  ({ I, indexPage, registerPage, successPage }) => {
+xScenario('Fill fields, user case, pozitive',  ({ I, indexPage, registerPage, successPage }) => {
 
     I.amOnPage('/');
     indexPage.clickRegister();

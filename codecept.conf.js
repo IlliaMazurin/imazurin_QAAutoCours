@@ -9,6 +9,7 @@ setHeadlessWhen(process.env.HEADLESS);
 // enable all common plugins https://github.com/codeceptjs/configure#setcommonplugins
 setCommonPlugins();
 
+
 /** @type {CodeceptJS.MainConfig} */
 exports.config = {
   tests: './tests/*_test.js',
@@ -23,7 +24,16 @@ exports.config = {
       windowSize: '1440x900',
     },
     ChaiWrapper: {
-      require: "codeceptjs-chai"
+      require: "codeceptjs-chai",
+    },
+    TxtFileReader: {
+      require: './helpers/txtFileReader.js',
+    },
+    plugins: {
+      tryTo: {
+        enabled: true,
+        pauseOnFail: {},
+      }
     }
   },
   include: {

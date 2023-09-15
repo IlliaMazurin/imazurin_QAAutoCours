@@ -1,11 +1,12 @@
 const { I } = inject();
 
 module.exports = {
-  myAccountSpoiler : { xpath: '//span[text()="My Account"]' },
-  registerButton : { xpath: '//a[text()="Register"]' },
-  signIn : { xpath: '//a[text()="Sign In"]' },
+  myAccountSpoiler : { xpath : '//span[text()="My Account"]' },
+  registerButton : { xpath : '//a[text()="Register"]' },
+  signIn : { xpath : '//a[text()="Sign In"]' },
   signOut : { xpath : '//a[text()="Sign Out"]' },
-  cartButton : { xpath: '//a[text()="Shopping Cart"]' },
+  cartButton : { xpath : '//a[text()="Shopping Cart"]' },
+  countItemInCart : { xpath : '//span[@id="cart-total2"]' },
   
     clickMyAccount () {
       I.click(this.myAccountSpoiler);
@@ -27,5 +28,11 @@ module.exports = {
     openProductCart () {
       this.clickMyAccount();
       I.click(this.cartButton);
+    },
+
+    async getCountItemInCart () {
+      const countItems = await I.grabTextFrom (this.countItemInCart);
+      console.log(countItems);
+      return +countItems;
     },
 };

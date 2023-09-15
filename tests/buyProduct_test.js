@@ -12,22 +12,29 @@ const USER = {
 
 };
 
+let productLink = new DataTable (['productLink', 'size', 'color']);
+productLink.add(['index.php?route=product/product&product_id=44', 'Medium', 'White']); //[medium], [white, brown, gray]
+productLink.add(['index.php?route=product/product&product_id=48', 'Large', 'Green']); //[large], [green, gray, black]
+productLink.add(['index.php?route=product/product&product_id=68', '', '']); //
+productLink.add(['index.php?route=product/product&product_id=45', 'Large', 'Gray']); //[large], [green, gray, black]
+
+
 Feature('buy product');
 
 Before(({ I, indexPage, cartPage }) => {
     I.login(USER);
-    indexPage.openProductCart();
-    cartPage.deletAllItem();
+    if (!(indexPage.getCountItemInCart == 0)) {
+        indexPage.openProductCart();
+        cartPage.deletAllItem();
+    };
   });
 
-Scenario('Add to cart prod id=44',  async ({ I , productPage, checkoutPage, successPage }) => {
-    I.amOnPage('index.php?route=product/product&product_id=44');
+Data(productLink).Scenario('add products to cart and confirm order',  async ({ I , current , productPage , checkoutPage , successPage }) => {
+    I.amOnPage(current.productLink);
     
-    productPage.selectColor();
-    let priceOnProductPage = await productPage.getProductNewPrice();
-    priceOnProductPage += await productPage.getColorProductPrice(); 
-    productPage.selectSize();
-    priceOnProductPage += await productPage.getSizeProductPrice();
+    let priceOnProductPage =  await productPage.getProductPrice();
+    priceOnProductPage += await productPage.selectColor(current.color);
+    priceOnProductPage += await productPage.selectSize(current.size);
     productPage.addToCart();
     
     I.proceedToCheckout();
@@ -43,4 +50,27 @@ Scenario('Add to cart prod id=44',  async ({ I , productPage, checkoutPage, succ
     checkoutPage.acceptConfirmOrder();
 
     successPage.checkPage();
-}).tag("id=44");
+}).tag("buy");
+
+/* Data(productIdsArray).Scenario('Buy product using txt fille',  async ({ I , current , productPage , checkoutPage , successPage }) => {
+    I.amOnPage(`index.php?route=product/product&product_id=${current}`);
+
+    // let priceOnProductPage =  await productPage.getProductPrice();
+    // priceOnProductPage += await productPage.selectColor(current.color);
+    // priceOnProductPage += await productPage.selectSize(current.size);
+    // productPage.addToCart();
+    
+    // I.proceedToCheckout();
+
+    // checkoutPage.verifyCheckOutAccountPage();
+    // checkoutPage.fillBillingDetails(USER);
+    // checkoutPage.acceptDeliveryDetail();
+    // checkoutPage.acceptDeliveryMethod();
+    // checkoutPage.acceptPaymentMethod();
+    // const flatPrice = await checkoutPage.getFlatPriceFromConfirmOrder();
+    // const totalPrice = await checkoutPage.getTotalPriceFromConfirmOrder();
+    // I.assertEqual (priceOnProductPage + flatPrice, totalPrice, "Prices are not in match!");
+    // checkoutPage.acceptConfirmOrder();
+
+    // successPage.checkPage();
+}).tag("txt");*/
