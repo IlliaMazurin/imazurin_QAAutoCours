@@ -1,19 +1,11 @@
-const Helper = require('@codeceptjs/helper');
+const fs = require ('fs');
 
-class TxtFileReader extends Helper {
+module.exports = {
+    fileReader(path) {
+        return fs.readFileSync(path, 'utf8');
+    },
 
-  readerFile() {
-    return fs.readFile('./input/idProduct.txt', 'utf8');
-  }
-
-  convertStringToArray(string) {
-    return string.split("\r\n");
-  }
-
-  // add custom methods here
-  // If you need to access other helpers
-  // use: this.helpers['helperName']
-
+    convertStringToArray(string) {
+        return string.split("\n");
+    }
 }
-
-module.exports = TxtFileReader;

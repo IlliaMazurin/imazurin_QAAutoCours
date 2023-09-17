@@ -26,14 +26,11 @@ exports.config = {
     ChaiWrapper: {
       require: "codeceptjs-chai",
     },
-    TxtFileReader: {
-      require: './helpers/txtFileReader.js',
-    },
-    plugins: {
-      tryTo: {
-        enabled: true,
-        pauseOnFail: {},
-      }
+  },
+  plugins: {
+    tryTo: {
+      enabled: true,
+      pauseOnFail: {},
     }
   },
   include: {
